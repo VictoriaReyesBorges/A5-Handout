@@ -1,5 +1,5 @@
 public class CalculateInfix {
-    public static Double infixToPostfix(ArrayDeque<Object> tokens) {
+    public static Double infixToPostfix(Queue<Object> tokens) {
         // FILL IN
     }
 }
