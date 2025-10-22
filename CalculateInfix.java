@@ -71,10 +71,15 @@ public class CalculateInfix {
             }
         }
 
-
+        // if or once tokens queue is empty
         if (tokens.isEmpty()) {
+            // while operator stack is not empty
+            // peek at the top of operStack
+            // if it's a left paren, throw runtime exception to let user know there are mismatched parenthesis,
+            // specifically no right paren was found
+            // otherwise, pop the operator and add it to the output queue
             while (!operStack.isEmpty()) {
-                if (operStack.peek() == '(') {
+                if (operStack.peek() == '(') { 
                     throw new RuntimeException("There are mismatched parenthesis. No right parenthesis to match left.");
                 } else {
                     Character c = operStack.pop();
