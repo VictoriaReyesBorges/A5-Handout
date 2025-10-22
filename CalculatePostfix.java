@@ -62,7 +62,7 @@ public class CalculatePostfix {
        double result = postfixToResult(tokens);
 
 
-       System.out.println("Answer" + result);
+       System.out.println("Answer" + " " + result);
    }
 
 
