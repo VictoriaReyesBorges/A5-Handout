@@ -44,8 +44,8 @@ public class CalculateInfix {
                 // if character is a right paren, pop operators off top of stack onto the output queue (outQueue) 
                 // until token at top of stack is a left paren
                 // once left paren is found, pop the paren off the operator stack (operStack)
-                // throws a runtime exception to let user know there are mismatched parenthesis, 
-                // specficially with no left paren found
+                // throws a runtime exception to let user know there are mismatched parenthesis when operator stack is empty,
+                // specficially with message that no left paren is found
                 if (c == ')') {
                     while (!operStack.isEmpty()) {
                         if (operStack.peek() == '(') {
@@ -53,9 +53,10 @@ public class CalculateInfix {
                         } else if ((operStack.peek() == '+') || (operStack.peek() == '-') || (operStack.peek() == '*') || (operStack.peek() == '/')){
                             Character m = operStack.pop();
                             outQueue.add(m);
-                        } else {
-                            throw new RuntimeException("There are mismatched parenthesis. Could not find a left parenthesis.");
-                        }
+                            if (operStack.isEmpty()) {
+                                throw new RuntimeException("There are mismatched parenthesis. No left parenthesis to match right.");
+                            }
+                        } 
                     }
                 }
 
@@ -84,16 +85,21 @@ public class CalculateInfix {
                 } else {
                     Character c = operStack.pop();
                     outQueue.add(c);
-
                 }
             }
         }
+
+        System.out.println("These are the contents of the output queue:" + outQueue);
 
         // finally, send output queue to postfix processing method 
         // return final answer 
         return CalculatePostfix.postfixToResult(outQueue);
         
+    }
 
-
+    // Testing method
+    public static void main(String[] args) {
+        Queue<Object> tokens = Tokenizer.readTokens("2-3/(5+6)");
+        infixToPostfix(tokens);
     }
 }
