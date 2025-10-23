@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class CalculateInfix {
     public static Double infixToPostfix(Queue<Object> tokens) {
         // stack that will hold operators
@@ -28,6 +30,29 @@ public class CalculateInfix {
                         }
                     } operStack.push(c);
                 }
+
+                //handling right associativity for ^
+                if(c == '^'){
+                    while (!operStack.isEmpty()){
+                        if (operStack.peek() == '^'){
+                            outQueue.add(operStack.pop());
+                        } else {
+                            break;
+                        }
+                    }
+                }
+
+                // Just keeping in case
+                // if ((c == '*') || (c == '/')) {
+                //     while (!operStack.isEmpty()) {
+                //         if ((operStack.peek() == '*') || (operStack.peek() == '/')) {
+                //             Character o = operStack.pop();
+                //             outQueue.add(o);
+                //         } else {
+                //             break;
+                //         }
+                //     } operStack.push(c);
+                // }
 
                 // if character is a right paren, pop operators off top of stack onto the output queue (outQueue) 
                 // until token at top of stack is a left paren
@@ -89,7 +114,30 @@ public class CalculateInfix {
         // return final answer 
         return CalculatePostfix.postfixToResult(outQueue);
         
-    }
+        static boolean hasLeftAssociation(char c){
+            if(c == '+' || c == '-' || c == '/' || c == '*'){ 
+                return true; //return true if it's left associativity
+            } else {
+                return false; //return false it's right associativity
+            }
+        }
+
+
+        public static void main(String[] args){
+            if (args.length == 0){
+                System.err.println("Usage: java CalculateInfix <expr>");
+                return;
+            }
+            // Convert the command-line argument into a queue of tokens
+             Queue<Object> tokens = readToken(args[0]); // assume readTokens handles numbers/operators/parentheses
+             System.out.println("Tokens queue:" + tokens);
+
+            // Directly compute the result
+            System.out.println("Result:" + infixToPostfix(tokens));
+    
+              
+        }
+
 
     // Testing method
     // public static void main(String[] args) {
