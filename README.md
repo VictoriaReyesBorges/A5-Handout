@@ -16,4 +16,6 @@ Reflection on your experience with this assignment:
 
 Chiashi Yang - Overall, I really enjoyed this assignmnet. My particular role was to work on the infixtoPostfix method. I found it to be challenging but still fun to code. I learned a lot about coding PEMDAS and ensuring that it actually goes in the right order. It made me feel accomplished at the end when my group and I succesfully coded and everything was operating correctly. I do wish the instructions were a little more clear, particularly with what to code for the associativity section. However, we were able to figure it out.
 
+Victoria Reyes Borges - This assignment was interesting to work on. I liked that we got to work on something that most people in the CS industry have done/also worked on and getting to learn different types of implementation. I had trouble implemeting the right and left associativity part of the assignment since the instructions were a little blunt. However, with help from my teammates we were able to work it out and learn something new.
+
 Any questions you still have?
