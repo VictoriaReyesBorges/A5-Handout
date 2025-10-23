@@ -103,15 +103,12 @@ public class CalculateInfix {
         // testing/debugging code
         System.out.println("These are the contents of the output queue:" + outQueue);
 
-        Double number = CalculatePostfix.postfixToResult(outQueue);
+        // Double number = CalculatePostfix.postfixToResult(outQueue);
 
-        System.out.println(number);
+        // System.out.println(number);
 
         // return number;
         // end of debugging code
-
-        // finally, send output queue to postfix processing method 
-        // return final answer 
 
         // if(c == '+' || c == '-' || c == '/' || c == '*'){ 
         //     return true; //return true if it's left associativity
@@ -120,8 +117,10 @@ public class CalculateInfix {
         // }
 
 
-
-        return CalculatePostfix.postfixToResult(outQueue);
+        // finally, send output queue to postfix processing method 
+        // return final answer 
+        Double number = CalculatePostfix.postfixToResult(outQueue);
+        return number;
     }
         
 
@@ -131,17 +130,18 @@ public class CalculateInfix {
 
 
         public static void main(String[] args){
-            // if (args.length == 0){
-            //     System.err.println("Usage: java CalculateInfix <expr>");
-            //     return;
-            // }
+            if (args.length == 0){
+                System.err.println("Usage: java CalculateInfix <expr>");
+                return;
+            }
+
             // Convert the command-line argument into a queue of tokens
             String expression = args[0];
              Queue<Object> tokens = Tokenizer.readTokens(expression); // assume readTokens handles numbers/operators/parentheses
              System.out.println("Tokens queue:" + tokens);
 
             // Directly compute the result
-            System.out.println("Result of Infix:" + infixToPostfix(tokens));
+            System.out.println("Result of Postfix Operation:" + infixToPostfix(tokens));
     
               
         }
