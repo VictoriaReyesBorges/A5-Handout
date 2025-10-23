@@ -119,8 +119,8 @@ public class CalculateInfix {
 
         // finally, send output queue to postfix processing method 
         // return final answer 
-        Double number = CalculatePostfix.postfixToResult(outQueue);
-        return number;
+        return CalculatePostfix.postfixToResult(outQueue);
+
     }
         
 
