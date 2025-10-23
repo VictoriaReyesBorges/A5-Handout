@@ -38,7 +38,7 @@ public static Double postfixToResult(Queue<Object> tokens) {
               }  else if (operation == '^'){
                     result = Math.pow (a, b);
         } else {
-            throw new IllegalArgumentException("Unsupported OPerator:" + operation);
+            throw new IllegalArgumentException("Unsupported Operator:" + operation);
         }
 
           stack.push(result);
