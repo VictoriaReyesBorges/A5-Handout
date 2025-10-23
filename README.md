@@ -20,4 +20,6 @@ Victoria Reyes Borges - This assignment was interesting to work on. I liked that
 
 Kiara Singh - Overall, I found this assignment to be very helpful with learning more about how stacks and queues operate in a real-world setting. I personally worked on the CalculatePostFix class and initially found it difficult to organize the logic correctly when it came to popping off of the stack, but after some attempts I was able to write the method correctly. Working in a team definitely helped me troubleshoot most of my logical errors and misunderstandings.
 
+Shakila Jafari - My work involved making sure all the operations ran correctly and followed the right order. At first, it seemed simple but I realized it’s actually a really important part of making the whole program work. I also handled what happens when something goes wrong, like dividing by zero or having an unsapported operator. I learned that even small pieces of code can make a big difference in how smooth and reliable a program turns out.
+
 Any questions you still have?
