@@ -1,58 +1,55 @@
 public class CalculatePostfix {
-    /**
-     * takes infix version of string equation and changes it into postfix
-     * calculates the postfix version for final answer
-     * @param tokens
-     * @return result after calculating
-     */
-    public static Double postfixToResult(Queue<Object> tokens) {
-        Stack<Double> stack = new Stack<>();
-        while (!tokens.isEmpty()){
-            Object token = tokens.remove();
-            if (token instanceof Double){
-                stack.push((Double) token);
+public static Double postfixToResult(Queue<Object> tokens) {
+      Stack<Double> stack = new Stack<>();
+      while (!tokens.isEmpty()){
+          Object token = tokens.remove();
+          if (token instanceof Double){
+              stack.push((Double) token);
 
 
 
 
-            } else if (token instanceof Character){
-                char operation = (Character) token;
+          } else if (token instanceof Character){
+              char operation = (Character) token;
 
 
-                double b = stack.pop();
-                double a = stack.pop();
-                double result = 0.0;
+              double b = stack.pop();
+              double a = stack.pop();
+              double result = 0.0;
 
-                if (operation == '+'){
-                    result = a + b;
-            }
-                else if (operation == '-'){
-                    result = a - b;
-                }
-                
-                else if (operation == '*'){
-                    result = a * b;
-                }
+              if (operation == '+'){
+                  result = a + b;
+          }
+              else if (operation == '-'){
+                  result = a - b;
+              }
+            
+              else if (operation == '*'){
+                  result = a * b;
+              }
 
-                else if (operation == '/'){
-                    if (b == 0){
-                        throw new IllegalArgumentException("Division by zero");
-                    } else {
-                        result = a / b;
-                    }
-                
-                }  else if (operation == '^'){
-                        result = Math.pow (a, b);
-            } else {
-                throw new IllegalArgumentException("Unsupported Operator:" + operation);
-            }
-
-            stack.push(result);
-            }
-
+              else if (operation == '/'){
+                  if (b == 0){
+                      throw new IllegalArgumentException("Division by zero");
+                  } else {
+                      result = a / b;
+                  }
+             
+              }  else if (operation == '^'){
+                    result = Math.pow (a, b);
+        } else {
+            throw new IllegalArgumentException("Unsupported Operator:" + operation);
         }
-        return stack.pop();
-    }
+
+          stack.push(result);
+          }
+
+      }
+      if (stack.isEmpty()){
+        throw new IllegalArgumentException("Stack is empty");
+      }
+      return stack.pop();
+  }
 
 
 
