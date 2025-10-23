@@ -18,9 +18,9 @@ public class CalculateInfix {
                 }
                 // if the character is an operator, compare with any operators in stack using PEMDAS
                 // pop, add, and push accordingly
-                if ((c == '+') || (c == '-') || (c == '*') || (c == '/')) {
+                if ((c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '^')) {
                     while (!operStack.isEmpty()) {
-                        if ((operStack.peek() == '*') || (operStack.peek() == '/')) {
+                        if ((operStack.peek() == '*') || (operStack.peek() == '/') || (operStack.peek() == '^')) {
                             Character o = operStack.pop();
                             outQueue.add(o);
                         } else {
@@ -28,18 +28,6 @@ public class CalculateInfix {
                         }
                     } operStack.push(c);
                 }
-
-                // Just keeping in case
-                // if ((c == '*') || (c == '/')) {
-                //     while (!operStack.isEmpty()) {
-                //         if ((operStack.peek() == '*') || (operStack.peek() == '/')) {
-                //             Character o = operStack.pop();
-                //             outQueue.add(o);
-                //         } else {
-                //             break;
-                //         }
-                //     } operStack.push(c);
-                // }
 
                 // if character is a right paren, pop operators off top of stack onto the output queue (outQueue) 
                 // until token at top of stack is a left paren
@@ -105,7 +93,7 @@ public class CalculateInfix {
 
     // Testing method
     // public static void main(String[] args) {
-    //     Queue<Object> tokens = Tokenizer.readTokens("(4-2)/2+1");
+    //     Queue<Object> tokens = Tokenizer.readTokens("(4-2)^2");
     //     infixToPostfix(tokens);
     // }
 }
