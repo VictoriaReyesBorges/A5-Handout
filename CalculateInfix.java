@@ -1,6 +1,9 @@
-import java.util.LinkedList;
-
 public class CalculateInfix {
+    /**
+     * changes string equation into infix order
+     * @param tokens
+     * @return double, calculated from CalculatePostFix.postfixToResult method
+     */
     public static Double infixToPostfix(Queue<Object> tokens) {
         // stack that will hold operators
         Stack<Character> operStack = new Stack<>();
@@ -20,40 +23,19 @@ public class CalculateInfix {
                 }
                 // if the character is an operator, compare with any operators in stack using PEMDAS
                 // pop, add, and push accordingly
-                if ((c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '^')) {
+                if ((c == '+') || (c == '-') || (c == '*') || (c == '/')) {
                     while (!operStack.isEmpty()) {
-                        if ((operStack.peek() == '*') || (operStack.peek() == '/') || (operStack.peek() == '^')) {
-                            Character o = operStack.pop();
-                            outQueue.add(o);
+                        if ((operStack.peek() == '*') || (operStack.peek() == '/')) {
+                            outQueue.add(operStack.pop());
                         } else {
                             break;
                         }
                     } operStack.push(c);
                 }
-
-                //handling right associativity for ^
-                if(c == '^'){
-                    while (!operStack.isEmpty()){
-                        if (operStack.peek() == '^'){
-                            outQueue.add(operStack.pop());
-                        } else {
-                            break;
-                        }
-                    }
+                // handling right associativity for ^
+                if(c == '^') {
+                    operStack.push(c);
                 }
-
-                // Just keeping in case
-                // if ((c == '*') || (c == '/')) {
-                //     while (!operStack.isEmpty()) {
-                //         if ((operStack.peek() == '*') || (operStack.peek() == '/')) {
-                //             Character o = operStack.pop();
-                //             outQueue.add(o);
-                //         } else {
-                //             break;
-                //         }
-                //     } operStack.push(c);
-                // }
-
                 // if character is a right paren, pop operators off top of stack onto the output queue (outQueue) 
                 // until token at top of stack is a left paren
                 // once left paren is found, pop the paren off the operator stack (operStack)
@@ -69,7 +51,7 @@ public class CalculateInfix {
                     }
 
                     operStack.pop();
-                    }
+                }
 
             // check if token is a double     
             } else if (tokens.peek() instanceof Double) {
@@ -94,8 +76,7 @@ public class CalculateInfix {
                 if (operStack.peek() == '(') { 
                     throw new RuntimeException("There are mismatched parenthesis. No right parenthesis to match left.");
                 } else {
-                    Character c = operStack.pop();
-                    outQueue.add(c);
+                    outQueue.add(operStack.pop());
                 }
             }
         }
@@ -124,27 +105,22 @@ public class CalculateInfix {
     }
         
 
-        
-        
-        
+    public static void main(String[] args){
+        if (args.length == 0){
+            System.err.println("Usage: java CalculateInfix <expr>");
+            return;
+        }
 
+        // Convert the command-line argument into a queue of tokens
+        String expression = args[0];
+        Queue<Object> tokens = Tokenizer.readTokens(expression); // assume readTokens handles numbers/operators/parentheses
+        System.out.println("Tokens queue:" + tokens);
 
-        public static void main(String[] args){
-            if (args.length == 0){
-                System.err.println("Usage: java CalculateInfix <expr>");
-                return;
-            }
-
-            // Convert the command-line argument into a queue of tokens
-            String expression = args[0];
-             Queue<Object> tokens = Tokenizer.readTokens(expression); // assume readTokens handles numbers/operators/parentheses
-             System.out.println("Tokens queue:" + tokens);
-
-            // Directly compute the result
-            System.out.println("Result of Postfix Operation:" + infixToPostfix(tokens));
+        // Directly compute the result
+        System.out.println("Result of Postfix Operation:" + infixToPostfix(tokens));
     
               
-        }
+    }
 
 
     // Testing method
