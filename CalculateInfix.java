@@ -25,7 +25,9 @@ public class CalculateInfix {
                 // pop, add, and push accordingly
                 if ((c == '+') || (c == '-') || (c == '*') || (c == '/')) {
                     while (!operStack.isEmpty()) {
-                        if ((operStack.peek() == '*') || (operStack.peek() == '/')) {
+                        if ((operStack.peek() == '*') || (operStack.peek() == '/') || (operStack.peek() == '^')) {
+                            outQueue.add(operStack.pop());
+                        } else if ((c == '-') && operStack.peek() == '-') {
                             outQueue.add(operStack.pop());
                         } else {
                             break;
