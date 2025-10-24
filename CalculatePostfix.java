@@ -1,4 +1,10 @@
 public class CalculatePostfix {
+    /**
+     * 
+     * @param tokens
+     * Calculates final result
+     * @return result
+     */
 public static Double postfixToResult(Queue<Object> tokens) {
       Stack<Double> stack = new Stack<>();
       while (!tokens.isEmpty()){
