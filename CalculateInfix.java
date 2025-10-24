@@ -1,7 +1,7 @@
 public class CalculateInfix {
     /**
      * changes string equation into infix order
-     * @param tokens
+     * @param tokens, queue from Tokenizer that contains equation elements
      * @return double, calculated from CalculatePostFix.postfixToResult method
      */
     public static Double infixToPostfix(Queue<Object> tokens) {
