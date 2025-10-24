@@ -1,6 +1,6 @@
 public class CalculateInfix {
     /**
-     * changes string equation into infix order
+     * changes string equation into postfix order
      * @param tokens, queue from Tokenizer that contains equation elements
      * @return double, calculated from CalculatePostFix.postfixToResult method
      */
@@ -84,7 +84,7 @@ public class CalculateInfix {
         }
 
         // testing/debugging code
-        System.out.println("These are the contents of the output queue:" + outQueue);
+        // System.out.println("These are the contents of the output queue:" + outQueue);
 
         // Double number = CalculatePostfix.postfixToResult(outQueue);
 
@@ -116,7 +116,7 @@ public class CalculateInfix {
         // Convert the command-line argument into a queue of tokens
         String expression = args[0];
         Queue<Object> tokens = Tokenizer.readTokens(expression); // assume readTokens handles numbers/operators/parentheses
-        System.out.println("Tokens queue:" + tokens);
+        // System.out.println("Tokens queue:" + tokens);
 
         // Directly compute the result
         System.out.println("Result of Postfix Operation:" + infixToPostfix(tokens));

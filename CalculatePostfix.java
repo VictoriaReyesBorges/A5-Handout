@@ -1,7 +1,7 @@
 public class CalculatePostfix {
     /**
      * 
-     * @param tokens
+     * @param tokens, queue from infixToPostfix method that contains equation elements in postfix form
      * Calculates final result
      * @return result
      */
